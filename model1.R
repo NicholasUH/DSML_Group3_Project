@@ -17,6 +17,19 @@ columns_to_keep <- c(4,7,12,13,14,15)
 dataset <- dataset[,columns_to_keep]
 View(dataset)
 
+# FIXED BETIME VARIABLE TO ONLY BE TIME
+library(lubridate)
+dataset$Bedtime <- ymd_hms(dataset$Bedtime)
+dataset$Time <- format(dataset$Bedtime, format = "%H:%M:%S")
+View(dataset)
+
+sum(is.na(dataset))
+dataset = na.omit(dataset)
+sum(is.na(dataset))
+
+dataset <- dataset[,-1]
+View(dataset)
+
 # FACTOR ANY CATEGORICALS, NUMERIC ANY NUMBERS R DOESNT READ PROPERLY
 
 
