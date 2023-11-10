@@ -6,34 +6,34 @@
 library(readr)
 library(lubridate)
 
-# READ DATASET
+# Read Data set
 dataset = read_csv("repos/DSML_Group3_Project/Sleep_Efficiency.csv")
 
-# CLEAN DATASET OF NULL VALUES
+# Clean data set of null values
 sum(is.na(dataset))
 dataset = na.omit(dataset)
 sum(is.na(dataset))
 
-# REMOVE ANY UNWANTED VARIABLES
+# Remove unnecessary variables
 columns_to_keep <- c(4,7,12,13,14,15)
 dataset <- dataset[,columns_to_keep]
 
-# FIXED BEDTIME VARIABLE TO ONLY BE TIME
+# Removed Year/Month/Day from Bedtime Variable
 dataset$Bedtime <- ymd_hms(dataset$Bedtime)
 dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
 
-# REMOVE ANY UNWANTED VARIABLES
+# Clean data set of null values
 sum(is.na(dataset))
 dataset = na.omit(dataset)
 sum(is.na(dataset))
 
 
-# FACTOR THE CATEGORICAL VARIABLES
+# Factor categorical variables
 dataset$`Smoking status` = as.factor(dataset$`Smoking status`)
 
 `Exercise frequency` = as.factor(`Exercise frequency`)
 
-# FITTING THE MODEL
+# Model Fitting
 sleep_lm = lm(`Sleep efficiency` ~ Bedtime + `Caffeine consumption` + `Alcohol consumption` + `Smoking status` + `Exercise frequency`)
 summary(sleep_lm)
 
