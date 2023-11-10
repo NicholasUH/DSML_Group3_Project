@@ -27,7 +27,6 @@ sum(is.na(dataset))
 dataset = na.omit(dataset)
 sum(is.na(dataset))
 
-
 # Factor categorical variables
 dataset$`Smoking status` = as.factor(dataset$`Smoking status`)
 
@@ -37,5 +36,5 @@ dataset$`Smoking status` = as.factor(dataset$`Smoking status`)
 sleep_lm = lm(`Sleep efficiency` ~ Bedtime + `Caffeine consumption` + `Alcohol consumption` + `Smoking status` + `Exercise frequency`)
 summary(sleep_lm)
 
-
-# MISSING ONE LEVEL IN EACH OF THE CATEGORICAL PREDICTORS
+# Issues to fix
+# Missing one level on each of the categorical variables
