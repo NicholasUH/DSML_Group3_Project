@@ -9,4 +9,3 @@ View(dataset)
 sum(is.na(dataset))
 new_dataset = na.omit(dataset)
 sum(is.na(new_dataset))
-
