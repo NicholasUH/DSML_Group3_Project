@@ -5,6 +5,8 @@
 #LIBRARIES
 library(readr)
 library(lubridate)
+library(tree)
+library(randomForest)
 
 # READ DATASET
 dataset = read_csv("Repositories/DSML_Group3_Project/Sleep_Efficiency.csv")
