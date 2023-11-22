@@ -34,6 +34,9 @@ dataset$`Exercise frequency` <- as.factor(dataset$`Exercise frequency`)
 sleep_lm <- lm(`Sleep efficiency` ~ Bedtime + `Caffeine consumption` + `Alcohol consumption` + `Smoking status` + `Exercise frequency`, data = dataset)
 summary(sleep_lm)
 
+par(mfrow=c(2,2))
+plot(sleep_lm)
+
 # Find best subset of predictors - all predictors were used after step-wise 
 step_model <- step(sleep_lm, direction = "forward")
 summary(step_model)
@@ -41,7 +44,8 @@ summary(step_model)
 par(mfrow=c(2,2))
 plot(step_model)
 
-# K-fold Cross Validation
+
+# Cross Validation
 MSE = rep(0,10)
 
 for(i in 1:10){
