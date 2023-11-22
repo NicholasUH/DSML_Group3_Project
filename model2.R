@@ -76,3 +76,14 @@ yHatP <- predict(prunedTree, newdata = testSet)
 # FIND MSE OF MODELS
 (unprunedMSE <- mean((yHatUP - testSet$SleepEfficiency)^2))
 (prunedMSE <- mean((yHatP - testSet$SleepEfficiency)^2))
+
+# FIND R^2 OF MODELS
+datasetMean <- mean(testSet$SleepEfficiency)
+
+unprunedSSResidual <- sum((testSet$SleepEfficiency - yHatUP)^2)
+SSTotal <- sum((testSet$SleepEfficiency - datasetMean)^2)
+
+(unprunedR2 <- 1 - (unprunedSSResidual / SSTotal))
+
+prunedSSResidual <- sum((testSet$SleepEfficiency - yHatP)^2)
+(prunedR2 <- 1 - (prunedSSResidual / SSTotal))
