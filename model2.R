@@ -68,3 +68,11 @@ plot(treeCV$size, treeCV$dev, type = "b")
 prunedTree <- prune.tree(sleepTreeModel, best = 3)
 plot(prunedTree)
 text(prunedTree)
+
+# MAKE PREDICTIONS FOR MODEL
+yHatUP <- predict(sleepTreeModel, newdata = testSet)
+yHatP <- predict(prunedTree, newdata = testSet)
+
+# FIND MSE OF MODELS
+(unprunedMSE <- mean((yHatUP - testSet$SleepEfficiency)^2))
+(prunedMSE <- mean((yHatP - testSet$SleepEfficiency)^2))
