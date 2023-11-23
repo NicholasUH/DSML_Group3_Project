@@ -65,9 +65,11 @@ text(sleepTreeModel, pretty = 0)
 treeCV <- cv.tree(sleepTreeModel)
 plot(treeCV$size, treeCV$dev, type = "b")
 
-prunedTree <- prune.tree(sleepTreeModel, best = 3)
+prunedTree <- prune.tree(sleepTreeModel, best = 4)
 plot(prunedTree)
 text(prunedTree)
+
+summary(prunedTree)
 
 # MAKE PREDICTIONS FOR MODEL
 yHatUP <- predict(sleepTreeModel, newdata = testSet)
