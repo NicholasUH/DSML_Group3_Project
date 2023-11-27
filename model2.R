@@ -7,6 +7,7 @@ library(readr)
 library(lubridate)
 library(tree)
 library(boot)
+library(dplyr)
 
 # READ DATASET
 
@@ -14,7 +15,7 @@ library(boot)
 # dataset = read_csv("Repositories/DSML_Group3_Project/Sleep_Efficiency.csv")
 
 # LOCAL TESTING
-dataset = read_csv("repos/DSML_Group3_Project/Sleep_Efficiency.csv")
+dataset = read_csv("Repositories/DSML_Group3_Project/Sleep_Efficiency.csv")
 
 # CLEAN DATASET OF NULL VALUES
 sum(is.na(dataset))
@@ -32,6 +33,7 @@ colnames(dataset) <- c('Bedtime', 'SleepEfficiency', 'CaffeineConsumption', 'Alc
 # FIXED BEDTIME VARIABLE TO ONLY BE TIME
 dataset$Bedtime <- ymd_hms(dataset$Bedtime)
 dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
+dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:00:00'), 'Early', 'Late')
 
 # REMOVE ANY UNWANTED VARIABLES
 sum(is.na(dataset))

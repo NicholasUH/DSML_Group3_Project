@@ -6,6 +6,7 @@
 library(readr)
 library(ggplot2)
 library(lubridate)
+library(dplyr)
 
 # Read Data set
 dataset <- read_csv("Repositories/DSML_Group3_Project/Sleep_Efficiency.csv")
@@ -22,10 +23,11 @@ dataset <- dataset[, columns_to_keep]
 # Removed Year/Month/Day from Bedtime Variable
 dataset$Bedtime <- ymd_hms(dataset$Bedtime)
 dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
+dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:00:00'), 'Early', 'Late')
 
 # Clean data set of null values
 dataset <- na.omit(dataset)
-
+View(dataset)
 # Factor categorical variables
 dataset$Bedtime <- as.factor(dataset$Bedtime)
 dataset$`Smoking status` <- as.factor(dataset$`Smoking status`)
