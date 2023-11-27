@@ -27,6 +27,7 @@ dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
 dataset <- na.omit(dataset)
 
 # Factor categorical variables
+dataset$Bedtime <- as.factor(dataset$Bedtime)
 dataset$`Smoking status` <- as.factor(dataset$`Smoking status`)
 dataset$`Exercise frequency` <- as.factor(dataset$`Exercise frequency`)
 
@@ -58,7 +59,6 @@ for(i in 1:10){
 }
 
 mean(MSE)
-
 
 
 
