@@ -33,7 +33,7 @@ colnames(dataset) <- c('Bedtime', 'SleepEfficiency', 'CaffeineConsumption', 'Alc
 # FIXED BEDTIME VARIABLE TO ONLY BE TIME
 dataset$Bedtime <- ymd_hms(dataset$Bedtime)
 dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
-dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:00:00'), 'Early', 'Late')
+dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:59:00'), 'Early', 'Late')
 
 # REMOVE ANY UNWANTED VARIABLES
 sum(is.na(dataset))

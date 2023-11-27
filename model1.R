@@ -23,7 +23,7 @@ dataset <- dataset[, columns_to_keep]
 # Removed Year/Month/Day from Bedtime Variable
 dataset$Bedtime <- ymd_hms(dataset$Bedtime)
 dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
-dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:00:00'), 'Early', 'Late')
+dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:59:00'), 'Early', 'Late')
 
 # Clean data set of null values
 dataset <- na.omit(dataset)
