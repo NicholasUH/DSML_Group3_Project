@@ -49,8 +49,8 @@ plot(step_model)
 # Cross Validation
 MSE = rep(0,10)
 
+set.seed(100)
 for(i in 1:10){
-  set.seed(i)
   train = sample(1:nrow(dataset), 0.8*nrow(dataset))
   test = dataset[-train,]
   cv_sleep_lm = lm(`Sleep efficiency` ~ Bedtime + `Caffeine consumption` + `Alcohol consumption` + `Smoking status` + `Exercise frequency`,data=dataset, subset=train)
