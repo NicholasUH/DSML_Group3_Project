@@ -27,7 +27,7 @@ dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:59:00'), 'Ear
 
 # Clean data set of null values
 dataset <- na.omit(dataset)
-View(dataset)
+
 # Factor categorical variables
 dataset$Bedtime <- as.factor(dataset$Bedtime)
 dataset$`Smoking status` <- as.factor(dataset$`Smoking status`)
