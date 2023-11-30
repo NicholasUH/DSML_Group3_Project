@@ -10,12 +10,10 @@ library(dplyr)
 library(randomForest)
 
 # READ DATASET
-#dataset = read_csv("Repositories/DSML_Group3_Project/Sleep_Efficiency.csv")
+dataset = read_csv("Repositories/DSML_Group3_Project/Sleep_Efficiency.csv")
 
 # CLEAN DATASET OF NULL VALUES
-sum(is.na(dataset))
 dataset = na.omit(dataset)
-sum(is.na(dataset))
 
 # REMOVE ANY UNWANTED VARIABLES
 columns_to_keep <- c(4,7,12,13,14,15)
@@ -31,9 +29,7 @@ dataset$Bedtime <- format(dataset$Bedtime, format = "%H:%M:%S")
 dataset$Bedtime <- ifelse(between(dataset$Bedtime, '21:00:00', '23:59:00'), 'Early', 'Late')
 
 # REMOVE ANY UNWANTED VARIABLES
-sum(is.na(dataset))
 dataset = na.omit(dataset)
-sum(is.na(dataset))
 
 # FACTOR CATEGORICAL VARIABLES
 dataset$Bedtime <- as.factor(dataset$Bedtime)
